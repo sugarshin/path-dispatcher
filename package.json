@@ -1,0 +1,36 @@
+{
+  "name": "path-dispatcher",
+  "version": "0.0.0",
+  "description": "url dispatcher",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sugarshin/path-dispatcher.git"
+  },
+  "main": "index.js",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "test": "mocha --compilers js:espower-babel/guess test.js",
+    "compile": "babel -d lib --presets es2015 --no-babelrc src",
+    "build": "npm run lint && npm run compile"
+  },
+  "author": "sugarshin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-preset-es2015": "^6.1.18",
+    "eslint": "^1.10.3",
+    "eslint-config-sugarshin": "0.0.13",
+    "eslint-plugin-babel": "^3.0.0",
+    "espower-babel": "^4.0.0",
+    "mocha": "^2.3.4",
+    "power-assert": "^1.2.0"
+  },
+  "dependencies": {
+    "glob-to-regexp": "^0.1.0"
+  }
+}
