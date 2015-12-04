@@ -3,7 +3,6 @@
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][david-image]][david-url]
 [![Devdependency Status][david-dev-image]][david-dev-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
 [![GitHub version][github-ver-image]][github-ver-url]
 [![License][license-image]][license-url]
 
@@ -43,8 +42,10 @@ pathDispatcher(routes = {}, config = { rootPath: '' })
 dispatcher.route(pathName, funcOrFuncs)
 ```
 
+```js
 @param {String}
-@param {Function | Array} funcOrFuncs
+@param {Function|Function[]} funcOrFuncs
+```
 
 ### dispatch
 
@@ -52,8 +53,9 @@ dispatcher.route(pathName, funcOrFuncs)
 dispatcher.dispatch(currentPathName)
 ```
 
+```js
 @param {String} [currentPathName = location.pathname || '']
-@param {Function | Array} funcOrFuncs
+```
 
 ## Contributing
 
