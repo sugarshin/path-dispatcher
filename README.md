@@ -1,14 +1,13 @@
 # path-dispatcher
 
 [![Build Status][travis-image]][travis-url]
-[![Dependency Status](david-image)][david-url]
+[![Dependency Status][david-image]][david-url]
+[![Devdependency Status][david-dev-image]][david-dev-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![GitHub version][github-ver-image]][github-ver-url]
 [![License][license-image]][license-url]
 
-**WIP**
-
-path-dispatcher
+Static url dispatcher
 
 ```
 npm i path-dispatcher
@@ -16,7 +15,45 @@ npm i path-dispatcher
 
 ## Usage
 
+```js
+import pathDispatcher from 'path-dispatcher';
+
+const dispatcher = pathDispatcher({
+  '/': () => {},
+  '/page': [() => {}, otherFunc],
+  ['/other.html']() {}
+}, { rootPath: '/root/path' });
+
+dispatcher.route('/page.html', pageFunc);
+
+dispatcher.dispatch();
+```
+
 ## API
+
+### create dispatcher
+
+```js
+pathDispatcher(routes = {}, config = { rootPath: '' })
+```
+
+### route
+
+```js
+dispatcher.route(pathName, funcOrFuncs)
+```
+
+@param {String}
+@param {Function | Array} funcOrFuncs
+
+### dispatch
+
+```js
+dispatcher.dispatch(currentPathName)
+```
+
+@param {String} [currentPathName = location.pathname || '']
+@param {Function | Array} funcOrFuncs
 
 ## Contributing
 
@@ -40,6 +77,8 @@ npm i path-dispatcher
 [travis-url]: https://travis-ci.org/sugarshin/path-dispatcher
 [david-image]: https://david-dm.org/sugarshin/path-dispatcher.svg
 [david-url]: https://david-dm.org/sugarshin/path-dispatcher
+[david-dev-image]: https://david-dm.org/sugarshin/path-dispatcher/dev-status.svg
+[david-dev-url]: https://david-dm.org/sugarshin/path-dispatcher#info=devDependencies
 [gratipay-image]: http://img.shields.io/gratipay/sugarshin.svg
 [gratipay-url]: https://gratipay.com/sugarshin/
 [coveralls-image]: https://coveralls.io/repos/sugarshin/path-dispatcher/badge.svg
@@ -49,4 +88,3 @@ npm i path-dispatcher
 [license-image]: http://img.shields.io/:license-mit-blue.svg
 [license-url]: http://sugarshin.mit-license.org/
 [downloads-image]: http://img.shields.io/npm/dm/path-dispatcher.svg
-[dependencies-image]: http://img.shields.io/david/sugarshin/path-dispatcher.svg

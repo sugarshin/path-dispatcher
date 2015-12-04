@@ -7,8 +7,9 @@
 import globToRegexp from 'glob-to-regexp';
 
 import objectForEach from './utils/objectForEach';
+import indexExtRegex from './utils/indexExtRegex';
 
-export default function pathDispatcher(routes = {}, config = { routePath: '' }) {
+export default function pathDispatcher(routes = {}, config = { rootPath: '' }) {
   objectForEach(routes, func => validateFuncs(func));
 
   function route(pathName, funcOrFuncs) {
@@ -18,21 +19,25 @@ export default function pathDispatcher(routes = {}, config = { routePath: '' }) 
 
   function dispatch(currentPathName = location.pathname || '') {
     objectForEach(routes, (funcOrFuncs, pathName) => {
-      const globPath = getGlobPath(pathName);
-      const regexp = globToRegexp(globPath, { extended: true });
+      const regexp = globToRegexp(createGlobPath(pathName), { extended: true });
       if (regexp.test(currentPathName)) {
         createFinalFunction(funcOrFuncs)();
       }
     });
   }
 
-  function getGlobPath(pathName) {
+  function createGlobPath(pathName) {
     if (/^\*$/.test(pathName)) {
       return '*';
     }
 
-    if (/\/(|index\.([^.\/]+$))$/.test(pathName)) {
+    if (/\/$/.test(pathName)) {
       return `${config.rootPath}${pathName}{,index.*}`;
+    }
+
+    if (indexExtRegex().test(pathName)) {
+      const finalPathName = pathName.replace(indexExtRegex(), '');
+      return `${config.rootPath}${finalPathName}{,/,/index.*}`;
     }
 
     if (/(.*)(?:\.([^.\/]+$))/.test(pathName)) {
@@ -42,10 +47,7 @@ export default function pathDispatcher(routes = {}, config = { routePath: '' }) 
     return `${config.rootPath}${pathName}{/,/index.*}`;
   }
 
-  return {
-    route,
-    dispatch
-  };
+  return { route, dispatch };
 }
 
 function validateFuncs(funcOrFuncs) {

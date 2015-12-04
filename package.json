@@ -1,21 +1,31 @@
 {
   "name": "path-dispatcher",
   "version": "0.0.0",
-  "description": "url dispatcher",
+  "description": "Static url dispatcher",
   "repository": {
     "type": "git",
     "url": "git@github.com:sugarshin/path-dispatcher.git"
   },
   "main": "index.js",
+  "keywords": [
+    "pathname",
+    "path-dispatcher",
+    "dispatcher",
+    "dispatch",
+    "router",
+    "route",
+    "routing",
+    "url"
+  ],
   "files": [
     "lib",
     "index.js"
   ],
   "scripts": {
-    "lint": "eslint src",
+    "eslint": "eslint src",
     "test": "mocha --compilers js:espower-babel/guess test.js",
-    "compile": "babel -d lib --presets es2015 --no-babelrc src",
-    "build": "npm run lint && npm run compile"
+    "babel": "babel -d lib --presets es2015 --no-babelrc src",
+    "build": "npm run eslint && npm run babel"
   },
   "author": "sugarshin",
   "license": "MIT",
