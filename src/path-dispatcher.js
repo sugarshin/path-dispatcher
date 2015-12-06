@@ -7,7 +7,6 @@
 import globToRegexp from 'glob-to-regexp';
 
 import objectForEach from './utils/objectForEach';
-import indexExtRegex from './utils/indexExtRegex';
 
 /**
  * pathDispatcher
@@ -104,7 +103,7 @@ function validateFuncs(funcOrFuncs) {
  * isFuncOrArrayOfFuncs
  *
  * @param {*} func
- * @throws {Boolean}
+ * @returns {Boolean}
  */
 function isFuncOrArrayOfFuncs(func) {
   return typeof func === 'function' ||
@@ -115,8 +114,17 @@ function isFuncOrArrayOfFuncs(func) {
  * isArrayOfFuncs
  *
  * @param {Array} array
- * @throws {Boolean}
+ * @returns {Boolean}
  */
 function isArrayOfFuncs(array) {
   return array.every(el => typeof el === 'function');
+}
+
+/**
+ * indexExtRegex
+ *
+ * @returns {RegExp}
+ */
+function indexExtRegex() {
+  return /\/index\.([^.\/]+$)$/;
 }
