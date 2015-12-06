@@ -24,8 +24,9 @@
   "scripts": {
     "eslint": "eslint src",
     "test": "mocha --compilers js:espower-babel/guess test.js",
+    "rm:lib": "rimraf lib",
     "babel": "babel -d lib --presets es2015 --no-babelrc src",
-    "build": "npm run eslint && npm run babel"
+    "build": "npm run eslint && npm run rm:lib && npm run babel && npm t"
   },
   "author": "sugarshin",
   "license": "MIT",
@@ -38,7 +39,8 @@
     "eslint-plugin-babel": "^3.0.0",
     "espower-babel": "^4.0.0",
     "mocha": "^2.3.4",
-    "power-assert": "^1.2.0"
+    "power-assert": "^1.2.0",
+    "rimraf": "^2.4.4"
   },
   "dependencies": {
     "glob-to-regexp": "^0.1.0"
