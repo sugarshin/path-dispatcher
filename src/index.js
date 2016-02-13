@@ -5,8 +5,7 @@
  */
 
 import globToRegexp from 'glob-to-regexp';
-
-import objectForEach from './utils/objectForEach';
+import objectForEach from './utils/object-for-each';
 
 /**
  * pathDispatcher

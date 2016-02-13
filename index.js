@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/path-dispatcher');
+module.exports = require('./lib');

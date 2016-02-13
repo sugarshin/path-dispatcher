@@ -1,5 +1,4 @@
 import assert from 'power-assert';
-
 import pathDispatcher from '.';
 
 before(done => {
