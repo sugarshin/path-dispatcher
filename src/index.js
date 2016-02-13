@@ -82,7 +82,7 @@ export default function pathDispatcher(routes = {}, config = { rootPath: '' }) {
  */
 function createFinalFunction(funcOrFuncs) {
   return Array.isArray(funcOrFuncs) ?
-    () => funcOrFuncs.forEach(func => func()) :
+    () => funcOrFuncs.map(func => func()) :
     funcOrFuncs;
 }
 
