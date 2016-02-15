@@ -1,6 +1,6 @@
 {
   "name": "path-dispatcher",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Static url dispatcher",
   "repository": {
     "type": "git",
